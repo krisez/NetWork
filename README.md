@@ -30,4 +30,10 @@
 
 库使用方法
 
-> 未知，clone吧
+> project  gradle 添加 
+    maven{
+            url 'http://krisez.cn:8081/repository/maven-releases'
+    }
+    
+> app gradle 添加
+`implementation 'cn.krisez:network:1.0'`
