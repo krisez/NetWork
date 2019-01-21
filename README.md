@@ -28,12 +28,15 @@
     }
     });
 
-库使用方法
 
-> project  gradle 添加 
+###库使用方法
+
+project  gradle 添加 
+
     maven{
             url 'http://krisez.cn:8081/repository/maven-releases'
     }
     
-> app gradle 添加
+app gradle 添加
+
 `implementation 'cn.krisez:network:1.0'`
