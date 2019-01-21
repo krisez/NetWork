@@ -1,7 +1,6 @@
 # NetWork
 网络请求库
 
-###
 封装类型  *RxJava2 + Retrofit2*  应用于**Android**开发
 
 ## 请求方法
@@ -29,7 +28,7 @@
     });
 
 
-###库使用方法
+## 库使用方法
 
 project  gradle 添加 
 
