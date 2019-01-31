@@ -38,4 +38,4 @@ project  gradle 添加
     
 app gradle 添加
 
-`implementation 'cn.krisez:network:1.0'`
+`implementation 'cn.krisez:network:$lasted'`
