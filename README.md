@@ -3,6 +3,19 @@
 
 封装类型  *RxJava2 + Retrofit2*  应用于**Android**开发
 
+## 库使用方法
+
+project  gradle 添加 
+
+    maven{
+            url 'http://krisez.cn:8081/repository/maven-releases'
+    }
+    
+app gradle 添加
+
+`implementation 'cn.krisez:network:$lasted'`
+
+
 ## 请求方法
 - 应用层
 新建Api.java  应用Retrofit2的请求方法封装 
@@ -26,16 +39,3 @@
     
     }
     });
-
-
-## 库使用方法
-
-project  gradle 添加 
-
-    maven{
-            url 'http://krisez.cn:8081/repository/maven-releases'
-    }
-    
-app gradle 添加
-
-`implementation 'cn.krisez:network:$lasted'`
