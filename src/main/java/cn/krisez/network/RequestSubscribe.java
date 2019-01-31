@@ -33,7 +33,6 @@ public class RequestSubscribe<T> implements Observer<Result> {
     @Override
     public void onNext(Result result) {
         this.mResult = result;
-        Log.d("RequestSubscribe", "onNext:" + result.statue);
     }
 
     @Override
