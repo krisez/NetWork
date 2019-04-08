@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
+import android.util.Log;
 import cn.krisez.network.handler.NetHandler;
 import cn.krisez.network.handler.ResultHandler;
 import io.reactivex.Observable;
@@ -40,15 +41,14 @@ public class NetWorkUtils {
 
     private void init() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(3, TimeUnit.SECONDS)
-                .readTimeout(3, TimeUnit.SECONDS).build();
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS).build();
         mRetrofit = new Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl("http://krisez.cn")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
-        this.mRequestSubscribe = new RequestSubscribe();
     }
 
     public void url(String url) {
@@ -65,20 +65,15 @@ public class NetWorkUtils {
      * @param <T>
      */
     public <T> NetWorkUtils create(final Observable<T> o) {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                o.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(mRequestSubscribe);
-            }
-        }, NetConst.count * 500);
+        this.mRequestSubscribe = new RequestSubscribe();
+        o.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(mRequestSubscribe);
         return this;
     }
 
     public static class NetApi {
-        public <T> T api(Class<T> apiClass) {
+        public <T> T api(Class<T> apiClass){
             return mRetrofit.create(apiClass);
         }
     }

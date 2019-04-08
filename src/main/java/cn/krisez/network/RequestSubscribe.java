@@ -33,7 +33,6 @@ public class RequestSubscribe<T> implements Observer<Result> {
     @Override
     public void onNext(Result result) {
         this.mResult = result;
-        NetConst.count++;
     }
 
     @Override
@@ -50,7 +49,6 @@ public class RequestSubscribe<T> implements Observer<Result> {
             if (mResultHandler != null)
                 mResultHandler.sendEmptyMessage(StateCode.FAILED);
         }
-        NetConst.count--;
     }
 
     @Override
@@ -66,6 +64,5 @@ public class RequestSubscribe<T> implements Observer<Result> {
             }
             mResultHandler.sendMessage(message);
         }
-        NetConst.count--;
     }
 }
