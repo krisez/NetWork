@@ -9,11 +9,11 @@ uploadArchives {
                 authentication(userName: 'admin', password: 'f4632580')
             }
             pom.project {
-                version '1.0.1'
+                version '1.0.3'
                 artifactId 'network'
                 groupId 'cn.krisez'
                 packaging 'aar'
-                description 'update version 1.0.1'
+                description '版本1.0.3: 延时请求 '
             }
         }
     }

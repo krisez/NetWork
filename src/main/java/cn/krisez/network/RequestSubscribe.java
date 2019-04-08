@@ -33,6 +33,7 @@ public class RequestSubscribe<T> implements Observer<Result> {
     @Override
     public void onNext(Result result) {
         this.mResult = result;
+        NetConst.count++;
     }
 
     @Override
@@ -49,15 +50,22 @@ public class RequestSubscribe<T> implements Observer<Result> {
             if (mResultHandler != null)
                 mResultHandler.sendEmptyMessage(StateCode.FAILED);
         }
+        NetConst.count--;
     }
 
     @Override
     public void onComplete() {
         if (mResultHandler != null) {
             Message message = new Message();
-            message.what = StateCode.SUCCESS;
-            message.obj = mResult;
+            if("ok".equals(mResult.statue)){
+                message.what = StateCode.SUCCESS;
+                message.obj = mResult;
+            }else if("error".equals(mResult.statue)){
+                message.what = StateCode.FAILED;
+                message.obj = mResult;
+            }
             mResultHandler.sendMessage(message);
         }
+        NetConst.count--;
     }
 }

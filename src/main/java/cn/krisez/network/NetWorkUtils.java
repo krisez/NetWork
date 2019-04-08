@@ -1,5 +1,7 @@
 package cn.krisez.network;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import cn.krisez.network.handler.NetHandler;
@@ -62,10 +64,16 @@ public class NetWorkUtils {
      * @param o
      * @param <T>
      */
-    public <T> NetWorkUtils create(Observable<T> o) {
-        o.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(mRequestSubscribe);
+    public <T> NetWorkUtils create(final Observable<T> o) {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                o.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(mRequestSubscribe);
+            }
+        }, NetConst.count * 500);
         return this;
     }
 

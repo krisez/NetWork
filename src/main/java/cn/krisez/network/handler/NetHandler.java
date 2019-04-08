@@ -15,12 +15,16 @@ public class NetHandler extends Handler {
 
     @Override
     public void handleMessage(Message msg) {
-        switch (msg.what){
+        switch (msg.what) {
             case StateCode.SUCCESS:
                 mResultHandler.onSuccess((Result) msg.obj);
                 break;
             case StateCode.FAILED:
-                mResultHandler.onFailed("出现一些错误~");
+                if (null != msg.obj) {
+                    Result result = (Result) msg.obj;
+                    mResultHandler.onFailed(result.extra);
+                } else
+                    mResultHandler.onFailed("出现一些错误~");
                 break;
             case StateCode.CONNECT_ERROR:
                 mResultHandler.onFailed("网络未连接~");
