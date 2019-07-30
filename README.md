@@ -8,12 +8,12 @@
 project  gradle 添加 
 
     maven{
-            url 'http://krisez.cn:8081/repository/maven-releases'
+           maven { url 'https://jitpack.io' }
     }
     
 app gradle 添加
 
-`implementation 'cn.krisez:network:1.0.5'`
+`implementation 'com.github.krisez:network:1.0.5'`
 
 
 ## 请求方法
