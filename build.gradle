@@ -5,7 +5,7 @@ uploadArchives {
     configuration = configurations.archives
     repositories {
         mavenDeployer {
-            repository(url: 'http://krisez.cn:8081/repository/maven-releases/') {
+            repository(url: 'xxxxxxx') {
                 authentication(userName: 'admin', password: 'f4632580')
             }
             pom.project {
