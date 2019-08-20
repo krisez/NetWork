@@ -8,7 +8,7 @@
 project  gradle 添加 
 
     maven{
-           maven { url 'https://jitpack.io' }
+          url 'https://jitpack.io'
     }
     
 app gradle 添加
